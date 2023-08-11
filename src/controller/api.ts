@@ -1,7 +1,17 @@
-import { Inject, Controller, Post, Provide, Query } from '@midwayjs/decorator';
+import {
+  Inject
+  , Controller
+  // , Post
+  , Provide
+  // , Query
+  , Get
+} from '@midwayjs/decorator';
+import {
+  apiOperation,
+  apiParam,
+} from '@ali/midway-swagger';
 import { Context } from 'egg';
-import { IGetUserResponse } from '../interface';
-import { UserService } from '../service/user';
+import { PuppeteerService } from '../service/puppeteer/service';
 
 @Provide()
 @Controller('/api')
@@ -10,11 +20,24 @@ export class APIController {
   ctx: Context;
 
   @Inject()
-  userService: UserService;
+  puppeteerService: PuppeteerService;
 
-  @Post('/get_user')
-  async getUser(@Query() uid: string): Promise<IGetUserResponse> {
-    const user = await this.userService.getUser({ uid });
-    return { success: true, message: 'OK', data: user };
+
+  @Get('/screenShot')
+  @apiParam({
+    name: 'url',
+    type: 'String',
+    description: '链接',
+  })
+  @apiOperation({
+    tags: ['screenShot'],
+    description: '获取截图',
+  })
+  async screenShot(ctx: Context) {
+    let data = ''
+    await this.puppeteerService.handler(ctx.param?.url).then(res => {
+      data = res
+    })
+    return { success: true, message: 'OK', data: data };
   }
 }
