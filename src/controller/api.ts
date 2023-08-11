@@ -12,6 +12,7 @@ import {
 } from '@ali/midway-swagger';
 import { Context } from 'egg';
 import { PuppeteerService } from '../service/puppeteer/service';
+import images = require('images');
 
 @Provide()
 @Controller('/api')
@@ -34,10 +35,15 @@ export class APIController {
     description: '获取截图',
   })
   async screenShot(ctx: Context) {
-    let data = ''
+    let data
     await this.puppeteerService.handler(ctx.param?.url).then(res => {
       data = res
     })
-    return { success: true, message: 'OK', data: data };
+    // return { success: true, message: 'OK', data: data };
+    return data
+  }
+  @Get('/test')
+  async test(ctx: Context) {
+    return images(100, 100).toBuffer("png");
   }
 }
