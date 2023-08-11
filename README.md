@@ -21,6 +21,11 @@ $ open http://localhost:7001/
 ### vgbaik
 > https://www.vgbaike.com/baldurs_gate_3/
 
+# 接口文档
+|  path  |              说明              |        输入        |  输出  |
+| :----: | :----------------------------: | :----------------: | :----: |
+|  123   | 输入信息返回全屏截图并保存本地 | ```{123123:123}``` | 单元格 |
+| 单元格 |     获取对应数据源对应词条     |       单元格       | 单元格 |
 # 依赖服务
 puppeteer: https://puppeteer.bootcss.com
 midway: https://github.com/midwayjs/midway
