@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import { DATE_DETAIL_FORMAT } from '../../constant';
 import { PuppeteerParam } from './interface';
 import images = require('images');
+let fs = require('fs');
 
 const puppeteer = require('puppeteer');
 
@@ -18,6 +19,7 @@ export class puppeteerService {
     const page = await browser.newPage();
     const now = moment();
     await page.goto(url);
+    // 本地缓存图片
     const path = `data_out/${now.format(DATE_DETAIL_FORMAT)}.png`;
     // 返回: <Promise<[Buffer|String]>> Promise对象，resolve后是截图的buffer
     // 图片即本地存储也进行返回
@@ -27,6 +29,7 @@ export class puppeteerService {
         fullPage: true
       }
     ).then(dataBuffer => {
+      // 构造返回数据
       res = dataBuffer
     });
     await browser.close();
