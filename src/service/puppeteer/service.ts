@@ -8,8 +8,8 @@ import images = require('images');
 const puppeteer = require('puppeteer');
 
 @Provide()
-export class PuppeteerService {
-  
+export class puppeteerService {
+
   async handler(options: PuppeteerParam) {
     console.log("options" + JSON.stringify(options))
     let res = images(100, 100).toBuffer("png");

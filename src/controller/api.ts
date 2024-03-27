@@ -10,7 +10,7 @@ import {
 
 
 import { Context } from 'egg';
-import { PuppeteerService } from '../service/puppeteer/service';
+import { puppeteerService } from '../service/puppeteer/service';
 import images = require('images');
 
 @Provide()
@@ -20,21 +20,26 @@ export class APIController {
   ctx: Context;
 
   @Inject()
-  puppeteerService: PuppeteerService;
+  puppeteerService: puppeteerService;
 
-
+  /*
+    通过链接获取网站截图
+  */
   @Get('/screenShot')
   async screenShot(ctx: Context, @Query('url') url: string) {
     console.log("debug" + JSON.stringify(ctx) + "\n" + "url: " + url)
     let data
     await this.puppeteerService.handler({ url: url }).then(res => {
       data = res
+    }).catch(e => {
+      console.error("screen shot error" + e)
     })
-    // return { success: true, message: 'OK', data: data };
     return data
   }
+
   @Get('/test')
   async test(ctx: Context) {
     return images(100, 100).toBuffer("png");
   }
+
 }

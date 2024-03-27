@@ -16,6 +16,9 @@ $ open http://localhost:7001/
 |      path       |              说明              |                          测试                          |
 | :-------------: | :----------------------------: | :----------------------------------------------------: |
 | /api/screenShot | 输入信息返回全屏截图并保存本地 | http://localhost:7002/api/screenShot?url=www.baidu.com |
+| /api/screenShot | 官方型号列表 | http://localhost:7002/api/screenShot?url=www.baidu.com |
+| /api/screenShot | 型号详情页 | http://localhost:7002/api/screenShot?url=www.baidu.com |
+| /api/screenShot | 型号详情页基础信息 | http://localhost:7002/api/screenShot?url=www.baidu.com |
 
 # 依赖服务
 puppeteer: https://puppeteer.bootcss.com
