@@ -4,7 +4,6 @@ import * as moment from 'moment';
 import { DATE_DETAIL_FORMAT } from '../../constant';
 import { PuppeteerParam } from './interface';
 import images = require('images');
-let fs = require('fs');
 
 const puppeteer = require('puppeteer');
 
