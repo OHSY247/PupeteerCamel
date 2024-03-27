@@ -4,11 +4,11 @@
   "description": "",
   "private": true,
   "dependencies": {
-    "@ali/midway-swagger": "^4.0.0",
     "@midwayjs/bootstrap": "^2.3.0",
     "@midwayjs/core": "^2.3.0",
     "@midwayjs/decorator": "^2.3.0",
     "@midwayjs/static-file": "^3.11.15",
+    "@midwayjs/swagger": "^3.15.6",
     "@midwayjs/typeorm": "^3.11.15",
     "@midwayjs/web": "^2.3.0",
     "egg": "^2.0.0",
@@ -19,6 +19,7 @@
     "npm": "^9.6.7",
     "puppeteer": "^21.0.2",
     "sqlite3": "^5.1.6",
+    "swagger-ui-dist": "^5.12.2",
     "typeorm": "^0.3.17"
   },
   "devDependencies": {

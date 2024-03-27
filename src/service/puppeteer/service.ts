@@ -9,11 +9,12 @@ const puppeteer = require('puppeteer');
 
 @Provide()
 export class PuppeteerService {
+  
   async handler(options: PuppeteerParam) {
-    console.log("options" + options)
+    console.log("options" + JSON.stringify(options))
     let res = images(100, 100).toBuffer("png");
     const url = options?.url ? options?.url : "https://puppeteer.bootcss.com/";
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
     const now = moment();
     await page.goto(url);
